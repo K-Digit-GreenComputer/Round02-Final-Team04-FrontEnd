@@ -20,7 +20,7 @@ class LoginForm extends StatelessWidget {
           TextFormField(
             keyboardType: TextInputType.emailAddress,
             controller: emailController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 17),
                 labelText: "이메일",
                 border: OutlineInputBorder(),
@@ -28,26 +28,27 @@ class LoginForm extends StatelessWidget {
                 hintText: "abcd@email.com"),
             validator: (value) {
               bool emailValid = RegExp(
-                  r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                      r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                   .hasMatch(value!);
-              if (value!.isEmpty) {
+              if (value.isEmpty) {
                 return "이메일을 입력해주세요.";
               } else if (!emailValid) {
                 return "이메일 형식에 맞게 입력해주세요.";
               }
+              return null;
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           TextFormField(
               keyboardType: TextInputType.emailAddress,
               controller: passwordController,
               obscureText: passwordToggle,
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.symmetric(vertical: 15),
+                contentPadding: const EdgeInsets.symmetric(vertical: 15),
                 labelText: "비밀번호",
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 hintText: "8자 이상의 비밀번호",
-                prefixIcon: Icon(Icons.lock),
+                prefixIcon: const Icon(Icons.lock),
                 suffixIcon: InkWell(
                   onTap: () {
                     passwordToggle = !passwordToggle;
@@ -62,8 +63,9 @@ class LoginForm extends StatelessWidget {
                 } else if (passwordController.text.length < 8) {
                   return "비밀번호는 8자 이상입니다.";
                 }
+                return null;
               }),
-          SizedBox(height: 45),
+          const SizedBox(height: 45),
           InkWell(
             onTap: () {
               if (_formfield.currentState!.validate()) {
@@ -76,7 +78,7 @@ class LoginForm extends StatelessWidget {
               height: 50,
               decoration: BoxDecoration(
                   color: kPrimaryColor, borderRadius: BorderRadius.circular(8)),
-              child: Center(
+              child: const Center(
                 child: Text(
                   "로그인",
                   style: TextStyle(
@@ -87,7 +89,7 @@ class LoginForm extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 25),
+          const SizedBox(height: 25),
         ],
       ),
     );
