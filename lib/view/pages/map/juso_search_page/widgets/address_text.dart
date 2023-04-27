@@ -44,7 +44,7 @@ class _AddressTextState extends State<AddressText> {
         builder: (context) => RemediKopo(),
       ),
     );
-    _AddressController.text =
-        '${model.zonecode!} ${model.address!} ${model.buildingName!}';
+    _AddressController.text = '${model.address!} ${model.buildingName!}';
+    // Logger().d(model.toJson());
   }
 }
